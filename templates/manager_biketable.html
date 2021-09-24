@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bbs manager</title>
+    {% load static %}
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .upframe {
+        {#margin-top: 10%;#} margin-left: 15%;
+        }
+
+        .iframe {
+            margin-top: 10%;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 700px;
+            margin-left: 20px;
+            border-collapse: collapse;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        td {
+            height: 15px;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="col-sm-2 col-xs-6 col-md-offset-3 upframe">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingZero">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseZero"
+                       aria-expanded="true" aria-controls="collapseOne">
+                        bike map
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseZero" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingZero">
+                <div class="list-group">
+                    <a href="/getbike/" class="list-group-item"
+                       id="routeTable">bike map</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                       aria-expanded="true" aria-controls="collapseOne">
+                        bike manage
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="list-group">
+                    <a href="/manager/gettable/" class="list-group-item"
+                       id="routeTable">bike table</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        bike activity
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="list-group">
+                    <a href="/manager/showinitialplot/" class="list-group-item"
+                       id="routeMap">fix plot</a>
+                    <a href="/manager/showinitialusedplot/" class="list-group-item"
+                       id="terminalFile">used plot</a>
+                    <a href="/manager/showinitialpriceplot/" class="list-group-item"
+                       id="terminalParameters">amount plot</a>
+                    <a href="" class="list-group-item"
+                       id="alarmManage">bike state</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="iframe">
+    <div style="border-width: 1px; border-color: black; margin-left: 32%; width: 900px; height: 50%">
+        <h1>BIKE TABLE</h1>
+        <div class="table_container">
+            <form action="/manager/gettable/" method="post">
+                {% csrf_token %}
+                <div style="width: 300px">
+                    <label style="font-size: 20px; font-family: 'Times New Roman'">bike state</label>
+                    <select name="bikestate" style="margin-left: 50px">
+                        <option value="all" selected="selected">all</option>
+                        <option value="accessible">accessible</option>
+                        <option value="using">using</option>
+                        <option value="unaccessible">unaccessible</option>
+                        <option value="fixing">fixing</option>
+                    </select>
+                    <button type="submit">search</button>
+                </div>
+            </form>
+            <form action="/manager/biketable/">
+                <div style="margin-top: 30px">
+                    <table id="aijquery" border="1" cellpadding="10" cellspacing="0" align="center" data-toggle="table">
+                        <thead>
+                        <tr>
+                            <td>bike No.</td>
+                            <td>bike state</td>
+                            <td>bike position</td>
+                            {#                        <td>bike stationy</td>#}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for bikeinfo in bikelist %}
+                            <tr>
+                                <td>{{ bikeinfo.0 }}</td>
+                                <td>{{ bikeinfo.1 }}</td>
+                                <td>{{ bikeinfo.2 }}</td>
+                                {#                            <td>{{ bikeinfo.3 }}</td>#}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

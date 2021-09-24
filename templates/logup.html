@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logup</title>
+</head>
+<body>
+{#<form action="/logup/" method="post">#}
+{#    {% csrf_token %}#}
+{#    <input type="text" name="name">#}
+{#    <input type="text" name="password">#}
+{#    <button type="submit">注册</button>#}
+{#</form>#}
+<div align="center">
+    <h1>Bike Sharing System</h1>
+    <h2>Log in</h2>
+    <form action="/logup/" method="post">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td align="right">your name:</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td align="right">password:</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <button type="submit">log up</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

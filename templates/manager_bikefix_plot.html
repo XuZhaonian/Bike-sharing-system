@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bbs manager</title>
+    {% load static %}
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .upframe {
+        {#margin-top: 10%;#} margin-left: 15%;
+        }
+
+        .iframe {
+            margin-top: 10%;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 700px;
+            margin-left: 20px;
+            border-collapse: collapse;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        td {
+            height: 15px;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="col-sm-2 col-xs-6 col-md-offset-3 upframe">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingZero">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseZero"
+                       aria-expanded="true" aria-controls="collapseOne">
+                        bike map
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseZero" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingZero">
+                <div class="list-group">
+                    <a href="/getbike/" class="list-group-item"
+                       id="routeTable">bike map</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                       aria-expanded="true" aria-controls="collapseOne">
+                        bike manage
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="list-group">
+                    <a href="/manager/gettable/" class="list-group-item"
+                       id="routeTable">bike table</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        bike activity
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="list-group">
+                    <a href="/manager/showinitialplot/" class="list-group-item"
+                       id="routeMap">fix plot</a>
+                    <a href="/manager/showinitialusedplot/" class="list-group-item"
+                       id="terminalFile">used plot</a>
+                    <a href="/manager/showinitialpriceplot/" class="list-group-item"
+                       id="terminalParameters">amount plot</a>
+                    <a href="" class="list-group-item"
+                       id="alarmManage">bike state</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="iframe">
+    <div style="border-width: 1px; border-color: black; margin-left: 32%; width: 900px; height: 50%">
+        <h1>BIKE FIX PLOT</h1>
+        <div class="table_container">
+            <form action="/manager/getfixdata/" method="post">
+                {% csrf_token %}
+                <div style="width: 300px">
+                    <label style="font-size: 20px; font-family: 'Times New Roman'">fix plot</label>
+                </div>
+                <div style="width: 300px">
+                    <label style="font-size: 15px; font-family: 'Times New Roman'">start time</label>
+                    <input name="start_time" type="datetime-local" value="2021-2-19T13:59:59"/>
+                    <label style="font-size: 15px; font-family: 'Times New Roman'">end time </label>
+                    <input name="end_time" type="datetime-local" value="2021-2-19T13:59:59"/>
+                </div>
+                <button type="submit">search</button>
+            </form>
+{#            <form action="/manager/biketable/">#}
+{#                <div style="margin-top: 30px">#}
+{#                    <table id="aijquery" border="1" cellpadding="10" cellspacing="0" align="center" data-toggle="table">#}
+{#                        <thead>#}
+{#                        <tr>#}
+{#                            <td>bike No.</td>#}
+{#                            <td>bike state</td>#}
+{#                            <td>bike position</td>#}
+                            {#                        <td>bike stationy</td>#}
+{#                        </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                        {% for bikeinfo in bikelist %}#}
+{#                            <tr>#}
+{#                                <td>{{ bikeinfo.0 }}</td>#}
+{#                                <td>{{ bikeinfo.1 }}</td>#}
+{#                                <td>{{ bikeinfo.2 }}</td>#}
+                                {#                            <td>{{ bikeinfo.3 }}</td>#}
+{#                            </tr>#}
+{#                        {% endfor %}#}
+{#                        </tbody>#}
+{#                    </table>#}
+{#                </div>#}
+{##}
+{#            </form>#}
+        </div>
+    </div>
+</div>
+<div class="iframe">
+    <div style="border-width: 1px; border-color: black; margin-left: 32%; margin-top: -10%; width: 900px; height: 50%">
+{#    <iframe src="https://www.baidu.com/"#}
+{#            width="800" height="600"#}
+{#            frameborder="1" name="test"#}
+{#            scrolling="auto">#}
+{#    </iframe>#}
+{#    <iframe src="{% static "test.html" %}"#}
+{#            width="800" height="600"#}
+{#            frameborder="1" name="test"#}
+{#            scrolling="auto">#}
+{#    </iframe>#}
+        <div style="height: 500px">
+        {% include 'bikefix.html' %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

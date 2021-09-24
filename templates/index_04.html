@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testsession</title>
+</head>
+<body>
+{#{{ user_name }}#}
+{#<form action="/index/">#}
+{#    <table border="1">#}
+{#        <tr>#}
+{#            <th>id</th>#}
+{#            <th>name</th>#}
+{#            <th>password</th>#}
+{#        </tr>#}
+{#        {% for row in usershow %}#}
+{#            <tr>#}
+{#                <td>{{ row.idtestuser }}</td>#}
+{#                <td>{{ row.name }}</td>#}
+{#                <td>{{ row.password }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+{#</form>#}
+<form action="/teststilllogin/">
+    <table border="1">
+        <tr>
+            <th>bikeid</th>
+            <th>bikestate</th>
+            <th>stationx</th>
+            <th>stationy</th>
+        </tr>
+
+                {%  for row in bikeshow %}
+            <tr>
+                    <td>{{ row.bike_id }}</td>
+                    <td>{{ row.bike_state }}</td>
+                    <td>{{ row.bike_stationx }}</td>
+                    <td>{{ row.bike_stationy }}</td>
+            </tr>
+                {%  endfor %}
+    </table>
+</form>
+
+<form action="/logout/">
+    <button>退出</button>
+</form>
+</body>
+</html>
